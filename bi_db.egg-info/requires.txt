@@ -1,0 +1,6 @@
+snowflake.sqlalchemy
+bi_tools
+bi_s3
+simple_salesforce
+salesforce_bulk
+pandas

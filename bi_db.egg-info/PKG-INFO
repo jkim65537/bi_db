@@ -1,0 +1,13 @@
+Metadata-Version: 1.1
+Name: bi-db
+Version: 1.3.2
+Summary: Database connector module designed to make database engineering operations easier for PitchBook Business Intelligence
+Home-page: https://git.pitchbookdata.com/business-intelligence/bi_db
+Author: BI Data Engineering
+Author-email: jun.kim@pitchbook.com
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 2
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
