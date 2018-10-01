@@ -1,27 +1,47 @@
-# bi_db 1.0
+# bi_db 1.3.2
 
 # Introduction
 Easy way to connect, query, and take actions on BI related databases.
 It is by no means complete yet. Still building methods on top of the main API.
-Only works in Python 2.7 & Pandas version 0.18.1 or higher.
+Only works with Pandas version 0.18.1 or higher.
+Python 2 & 3 compatible and OS Independent
 
 # API Details
 
 ## Installation
 
-To install, clone this repository and run ez_db_setup.sh by running
+To install, run the command below
 
 ```
-/home/$USER/redpy/sh ez_db_setup.sh
+pip install bi_db
 ```
 
-## API Methods
+## Connections
 
+* dbConnection
+* DemandGenConnection
+* GammaRedshift
+* JobviteConnection
+* PBAdminConnection
+* PBAPIUsage
+* PBLogCopyConnection
+* RedshiftConnection
+* RTSConnection
+* S3DevTrackingData
+* SalesforceSOAPConnection
+* SFReplicationConnection
+* SnowflakeConnection
+
+## API Methods (applies to all)
+* `sql_dataframe`: Execute the query and return the queried results
+                   in a pandas dataframe.
+
+## API Methods (only applies to SnowflakeConnection)
 * `write_to_sql`: Append to or replace an existing table in snowflake.
 * `load`: Bulk load s3 object into Snowflake.
 * `append`: Bulk append s3 object into Snowflake.
 * `replace`: Bulk replace s3 object into Snowflake.
-* `update`: Bulk replace s3 object into Snowflake.
+* `update`: Bulk upsert s3 object into Snowflake.
 * `create`: Create a database object.
 * `unload`: Unload a database table into a specified s3 location (not tested yet).
 * `get_metadata`: Get and return the metadata table.
@@ -30,6 +50,15 @@ To install, clone this repository and run ez_db_setup.sh by running
 * `query_executor`: Executes the query.
 * `sql_dataframe`: Execute the query and return the queried results
                    in a pandas dataframe.
+* `change_data_type`: Change the data type of a column in a table.
+* `get_data_type_conversion_function` (private): Gets the sql function for the given data type.
+* `create_custom_engine` (private): Creates custom engine to Snowflake.
+* `table_exists` (private): Checks to see if table exists.
+* `close_connection` (private): Closes the open connection to Snowflake db.
+* `drop_table` (private): Drops a table from Snowflake db.
+* `grant_permission` (private): Grants permission to database objects.
+* `format_for_load` (private): Formats the Pandas DataFrame for database load operation.
+* `get_bucket` (private): Returns the relevant information regarding the s3 bucket in use.
 
 ## Example Usage
 
@@ -126,5 +155,5 @@ sc.query_executor(query="DROP TABLE TABLE_NAME")
 ### sql_dataframe example
 
 ```python
-sc.cancel_query(query="SELECT * FROM DB.SCHEMA.TABLE")
+sc.sql_dataframe(query="SELECT * FROM DB.SCHEMA.TABLE")
 ```
